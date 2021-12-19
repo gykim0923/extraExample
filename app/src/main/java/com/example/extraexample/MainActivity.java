@@ -14,10 +14,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onClickButton(View v){
+    public void onClickButton(View v){ //버튼에 onclick 설정 넣어야함
         Intent intent = new Intent(this, NewActivity.class);
         intent.putExtra("str","Hello world");
-        intent.putExtra("num","123");
+        intent.putExtra("number",123);
         startActivity(intent);
     }
 }
