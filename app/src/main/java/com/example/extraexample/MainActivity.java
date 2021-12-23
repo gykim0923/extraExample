@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.AndroidViewModel;
@@ -13,9 +14,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class MainActivity extends AppCompatActivity {
+    int count =0;
     ActivityResultLauncher<Intent> activityResultLauncher; // 런처 시작
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,4 +61,25 @@ public class MainActivity extends AppCompatActivity {
 //        super.onActivityResult(requestCode, resultCode, data);
 //
 //    }
+    public void onClickButton3(View v){ //버튼에 onclick 설정 넣어야함
+       count++;
+        TextView textView = (TextView) findViewById(R.id.num);
+        textView.setText(String.valueOf(count));
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) { //화면 돌려도 저장
+        super.onSaveInstanceState(outState);
+        outState.putInt("count",count);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        count = savedInstanceState.getInt("count");
+        TextView textView = (TextView) findViewById(R.id.num);
+        textView.setText(String.valueOf(count));
+    }
 }
