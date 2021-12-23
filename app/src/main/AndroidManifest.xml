@@ -13,14 +13,7 @@
         <activity
             android:name=".NewActivity2"
             android:exported="true" >
-            <intent-filter>
-                //필터 넣기
-                <action android:name = "android.intent.action.VIEW" />
 
-                <data android:mimeType="text/html" android:scheme="https" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".NewActivity"
