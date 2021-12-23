@@ -7,8 +7,10 @@ import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.AndroidViewModel;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -39,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("number",123);
 //        startActivity(intent);
         activityResultLauncher.launch(intent);
+    }
+    public void onClickButton2(View v){
+//        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:/119"));//dialog에 연결
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.parse("http://www.google.com"),"text/html"); //웹페이지 띄우기
+        intent.addCategory(Intent.CATEGORY_DEFAULT );
+        startActivity(intent);
+
     }
 
 //    @Override
